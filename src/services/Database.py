@@ -10,7 +10,8 @@ class Database():
         config = {
             'user': 'user',
             'password': 'plaffa',
-            'host': 'localhost',
+            'host': '127.0.0.1',
+            'port': '3306',
             'raise_on_warnings': True,
         }
         connection = mysql.connector.connect(**config)
