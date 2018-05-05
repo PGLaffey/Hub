@@ -1,18 +1,28 @@
 import time
+from services.Database import Database
+from model.User import User
 
 class Hub():
     def __init__(self):
         self.db = Database()
-        self.user = None
-        self.user = self.login("DEFAULT", "PASSWORD")
+        self.createUser("DEFAULT", "PASSWORD")
+        self.currentUser = self.attemptLogin("DEFAULT", "PASSWORD")
 
-    def login(self, username, password):
-        users = self.db.getUsers()
-        for user in users:
-            if user.getUsername() == username:
-                if user.getPassword() == password:
-                    self.printer("Logged into user: " + username)
-                    return user
+    def createUser(self, username, password, permission = 1, speed = 0.05):
+        if not self.db.userExists(username):
+            attr = list(username, password, permission, speed)
+            self.db.addUser(attr)
+            self.printer("User " + username + " successfully added.")
+        else:
+            self.printer("User " + username + " already exists.")
+
+    def login(self):
+        print("login")
+
+    def attemptLogin(self, username, password):
+        if password == self.db.getPassword(username):
+            self.printer("Logged into user: " + username)
+            return self.db.getUser(username)
         self.printer("Invalid login credentials.")
 
     def printer(self, string):
@@ -21,46 +31,7 @@ class Hub():
             if self.user != None:
                 time.sleep(self.user.getSpeed())
             else:
-                time.sleep(0.1)
-
-class Database():
-    def __init__(self):
-        self.importUsers()
-    
-    def importUsers(self):
-        self.users = []
-        self.users.append(User("DEFAULT", "PASSWORD", 1))
-
-    def getUsers(self):
-        return self.users
-
-class User():
-    def __init__(self, username, password, permission):
-        self.username = username
-        self.password = password
-        self.permission = permission
-        self.speed = 0.01
-
-    def getUsername(self):
-        return self.username
-
-    def getPassword(self):
-        return self.password
-
-    def getPermission(self):
-        return self.permission
-
-    def getSpeed(self):
-        return speed
-
-    def setSpeed(self, speed):
-        self.speed = speed
-
-    def setPermission(self, permission):
-        self.permission = permission
-
-    def setPassword(self, password):
-        self.password = password
+                time.sleep(0.05)
 
 Hub()
     

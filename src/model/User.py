@@ -1,9 +1,9 @@
 class User():
-    def __init__(self, username, password, permission):
+    def __init__(self, username, password, permission, speed = 0.05):
         self.username = username
         self.password = password
         self.permission = permission
-        self.speed = 0.01
+        self.speed = speed
 
     def getUsername(self):
         return self.username
