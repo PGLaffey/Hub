@@ -9,9 +9,10 @@ class Hub():
         self.running = True
         self.initializeCommands()
         self.user = None
-        self.createUser(["DEFAULT", "PASSWORD", 1, 25])
+        #self.createUser(["DEFAULT", "PASSWORD", 1, 25])
+        #self.user = self.attemptLogin("DEFAULT", "PASSWORD")
         self.defaultUser = User("DEFAULT", "PASSWORD", 1, 25)
-        self.user = self.attemptLogin("DEFAULT", "PASSWORD")
+        self.user = self.defaultUser
         self.getCommand()
 
     def getCommand(self):
@@ -41,9 +42,10 @@ class Hub():
     def attemptLogin(self, username, password):
         if password == self.db.getPassword(username):
             self.printer("Logged into user: " + username + "\n")
-            return self.db.getUser(username)
+            self.user = self.db.getUser(username)
+            return True
         self.printer("Invalid login credentials.\n")
-        return None
+        return False
 
     def printer(self, string):
         for char in string:
@@ -79,26 +81,59 @@ class Hub():
         self.printerInvCmd(["Create"] + arg)
 
     def cmdLogin(self, arg):
+        login = True
         if self.user != self.defaultUser:
-            self.cmdLogout(arg)
-        pass
+            login = self.cmdLogout(arg)
+        if login:
+            attributes = ["username", "password"]
+            values = []
+            count = 0
+            while True:
+                self.printer("Enter your " + attributes[count] + ": ")
+                ans = input()
+                if ans.upper() == "CANCEL":
+                    self.printer("Login cancelled.\n")
+                    return False
+                elif count == 0:
+                    values.append(ans)
+                    count += 1
+                else:
+                    values.append(ans)
+                    if self.attemptLogin(values[0], values[1]):
+                        return True
+                    else:
+                        count = 0
+        return False
+
+    def cmdLog(self, arg):
+        if len(arg) > 0:
+            cmd = arg.pop(0)
+            if cmd.upper() == "IN":
+                return self.cmdLogin(arg)
+            elif cmd.upper() == "OUT":
+                return self.cmdLogout(arg)
+            arg = [cmd] + arg
+        self.printerInvCmd(["Log"] + arg)
+        
+                
 
     def cmdLogout(self, arg):
         if self.user != self.defaultUser:
-            valid = False
-            while not valid:
+            while True:
                 self.printer("Are you sure you want to log out of user: " + self.user.getName())
                 ans = input()
                 if ans.upper() == "YES":
                     self.user = self.defaultUser
                     self.printer("Logged out of user: " + self.user.getName()) 
-                    valid = True
+                    return True
                 elif ans.upper() == "NO" or ans.upper() == "CANCEL":
-                    valid = True
+                    self.printer("Logout cancelled")
+                    return False
                 else:
                     self.printerInvIn(ans, "enter Yes or No")
+        self.printer("Cannot logout, not logged into a user.\n")
             
-
+#Rework so that it returns true or false and loops on True
     def cmdCreateUser(self):
         cancelled = False
         attributes = ["username", "password", "permission", "speed (Default 25)"]
@@ -152,3 +187,5 @@ class Hub():
         self.commands["HELP"] = self.cmdHelp
         self.commands["CREATE"] = self.cmdCreate
         self.commands["LOGIN"] = self.cmdLogin
+        self.commands["LOGOUT"] = self.cmdLogout
+        self.commands["LOG"] = self.cmdLog
