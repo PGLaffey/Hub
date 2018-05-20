@@ -33,11 +33,11 @@ class Hub():
 
     def createUser(self, attr):
         username = attr[0]
-        if not self.db.userExists(username):
-            self.db.addUser(attr)
-            self.printer("User " + username + " successfully added.\n")
-        else:
+        if self.db.userExists(username):
             self.printer("User " + username + " already exists.\n")
+            return False
+        self.printer("User " + username + " successfully added.\n")
+        return self.db.addUser(attr)
 
     def attemptLogin(self, username, password):
         if password == self.db.getPassword(username):
@@ -133,18 +133,16 @@ class Hub():
                     self.printerInvIn(ans, "enter Yes or No")
         self.printer("Cannot logout, not logged into a user.\n")
             
-#Rework so that it returns true or false and loops on True
     def cmdCreateUser(self):
-        cancelled = False
         attributes = ["username", "password", "permission", "speed (Default 25)"]
         values = []
         count = 0
-        while count < 4 and not cancelled:
+        while count < 4:
             error = None
             self.printer("Please enter the new users " + attributes[count] + ": ")
             ans = input()
             if ans.upper() == "CANCEL":
-                cancelled = True
+                return False
             elif count == 0:
                 if self.db.userExists(ans):
                     error = "username already in use"
@@ -174,8 +172,7 @@ class Hub():
                     error = "a valid number"
             if error != None:
                 self.printerInvIn(ans, error)
-        if not cancelled:
-            self.createUser(values)
+        return self.createUser(values)
                 
                         
 
