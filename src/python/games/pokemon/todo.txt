@@ -1,0 +1,4 @@
+make a way of tracking all current pokemon (number id maybe
+convert the number to string and set variables to that)
+
+set moves on current pokemon

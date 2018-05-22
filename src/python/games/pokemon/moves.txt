@@ -1,0 +1,166 @@
+#Format; Name, Power, Accuracy, Type, Effect
+Absorb, 20, 100, grass, hp + 1/2 * damage
+Acid, 40, 100, poison
+Acid Armor, 0, 100, poison, sharply raises defense
+Agility, 0, 100, psychic, sharply raises speed
+#Amnesia, 0, 100, phychic
+Aurora Beam, 65, 100, ice
+Barrage, 15, 85, normal, hits 2-5 times
+Barrier, 0, 100, psychic, sharply raises defense
+#Bide, 0, 100, normal, takes damage for two turns then strikes back with double
+Bind, 15, 85, normal, damage for 4-5 turns
+Bite, 60, 100, dark
+Blizzard, 110, 70, ice
+Body Slam, 85, 100, normal
+Bone Club, 65, 85, ground
+Bonemerang, 60, 90, ground, hits 2 times
+Bubble, 40, 100, water
+Bubble Beam, 65, 100, water
+Clamp, 35, 85, water, damage for 4-5 turns
+Comet Punch, 18, 85, normal, hits 2-5 times
+Confuse Ray, 0, 100, ghost, confuses opponent
+Confusion, 50, 100, psychic
+Constrict, 10, 100, normal
+Conversion, 0, 100, normal, changes type to first move
+#Counter, 0, 100, fighting, when hit by physical attack returns with 2 times power
+Crabhammer, 100, 90, water
+Cut, 50, 95, normal
+Defense Curl, 0, 100, normal, raises defense
+Dig, 80, 100, ground, digs underground first turn, hits on second
+Disable, 0, 100, normal, disables opponents last attack
+Dizzy Punch, 70, 100, normal
+Double Kick, 30, 100, fighting, hits 2 times
+Double Slap, 15, 85, normal, hits 2-5 times
+#Double Team, 0, 100, normal, raises evasiveness
+Double-Edge, 120, 100, normal, recoil damage
+Dragon Rage, 0, 100, dragon, inflicts 40 hp
+Dream Eater, 100, 100, psychic, recover half of damage if opponent is sleeping
+Drill Peck, 80, 100, flying
+Earthquake, 100, 100, ground, power is double if opponent is using dig
+Egg Bomb, 100, 75, normal
+Ember, 40, 100, fire
+Explosion, 250, 100, normal, user faints
+Fire Blast, 110, 85, fire
+Fire Punch, 75, 100, fire
+Fire Spin, 35, 85, fire, damage for 4-5 turns
+#Fissure
+Flamethrower, 90, 100, fire
+Flash, 0, 100, normal, lowers opponents accuracy
+Fly, 90, 95, flying, flies up first and attacks on second turn
+Focus Energy, 0, 100, normal, increase crit ratio
+Fury Attack, 15, 85, normal, hits 2-5 times
+Fury Swipes, 18, 80, normal, hits 2-5 times
+Glare, 0, 100, normal, paralyzes opponent
+Growl, 0, 100, normal, lowers opponent attack
+Growth, 0, 100, normal, raises attack
+#Guillotine
+Gust, 40, 100, flying, double damage if opponent using fly
+Harden, 0, 100, normal, raises defense
+Haze, 0, 100, ice, resets all stats
+Headbutt, 70, 100, normal
+High Jump Kick, 130, 90, fighting, if misses user loses half their hp
+Horn Attack, 65, 100, normal
+#Horn Drill
+Hydro Pump, 110, 80, water
+Hyper Beam, 150, 90, normal, skip next turn
+Hyper Fang, 80, 90, normal
+Hypnosis, 0, 60, psychic, puts opponent to sleep
+Ice Beam, 90, 100, ice
+Ice Punch, 75, 100, ice
+Jump Kick, 100, 95, fighting, if misses user loses half hp
+Karate Chop, 50, 100, fighting, high crit ratio
+Kinesis, 0, 100, psychic, lower opponents accuracy
+Leech Life, 20, 100, bug, recover half of dam
+Leech Seed, 0, 90, grass, steal hp from opponent each turn
+Leer, 0, 100, normal, lower opponents defense
+Lick, 30, 100, ghost
+#Light Screen
+Lovely Kiss, 0, 75, normal, puts opponent to sleep
+#Low Kick
+Meditate, 0, 100, psychic, raises attack
+Mega Drain, 40, 100, grass, recover half damage
+Mega Kick, 120, 75, normal
+Mega Punch, 80, 85, normal
+Metronome, 0, 100, normal, use a random move
+Mimic, 0, 100, normal, uses opponents last move
+Minimize, 0, 100, normal, sharply raises evasivness
+Mirror Move, 0, 100, flying, uses opponents last move
+Mist, 0, 100, ice, stops stat changes
+Night Shade, 0, 100, ghost, damage is equal to users level
+Pay Day, 40, 100, normal
+Peck, 35, 100, flying
+Petal Dance, 120, 100, grass, attacks for 2-3 turns then becomes confused
+Pin Missile, 25, 95, bug, hits 2-5 times
+Poison Gas, 0, 90, poison, poisons opponent
+Poison Power, 0, 75, poison, poisons opponent
+Pound, 40, 100, normal
+Psybeam, 65, 100, psychic
+Psychic, 90, 100, psychic
+Psywave, 0, 80, psychic, damage equals 50-150% of users level
+Quick Attack, 40, 100, normal
+Rage, 20, 100, normal, raises attack
+Razor Leaf, 55, 95, grass, high crit ratio
+Razor Wind, 80, 100, normal, charges on first hits on second turn and high crit ratio
+Recover, 0, 100, normal, recovers half max hp
+#Reflect
+Rest, 0, 100, psychic, sleeps for 2 turns then fully heals
+#Roar
+Rock Slide, 75, 90, rock
+Rock Throw, 50, 90, rock
+Rolling Kick, 60, 85, fighting
+Sand Attack, 0, 100, ground, lowers opponents accuracy
+Scratch, 40, 100, normal
+Screech, 0, 85, normal, sharply lowers opponents defense
+Seismic Toss, 0, 100, fighting, damage equal to users level
+Self-Destruct, 200, 100, normal, user faints
+Sharpen, 0, 100, normal, raises attack
+Sing, 0, 55, normal, puts opponent to sleep
+Skull Bash, 130, 100, normal, first turn raises defense attacks on second
+Sky Attack, 140, 90, flying, charges first then attacks second turn
+Slam, 80, 75, normal
+Slash, 70, 100, normal, high crit ratio
+Sleep Powder, 0, 75, grass, puts opponent to sleep
+Sludge, 65, 100, poison
+Smog, 30, 70, poison
+Smokescreen, 0, 100, normal, lowers opponent accuracy
+Soft-Boiled, 0, 100, normal, recover half hp
+Solar Beam, 120, 100, grass, charges first attacks second turn
+Sonic Boom, 0, 90, normal, inflicts 20 damage
+Spike Cannon, 20, 100, normal, hits 2-5 times
+Splash, 0, 100, normal, doesnt do anything
+Spore, 0 , 100, grass, puts opponent to sleep
+Stomp, 65, 100, normal
+Strength, 80, 100, normal
+#String Shot
+Struggle, 50, 100, normal, recoil damage
+Stun Spore, 0, 75, grass, paralyzes opponent
+Submission, 80, 80, fighting, recoil damage
+#Substitute,
+Super Fang, 0, 90, normal, damage for half hp
+Supersonic, 0, 55, normal, confuses opponent
+Surf, 90, 100, water
+Swift, 60, 100, normal, cannot miss
+Sword Dance, 0, 100, normal, sharply raises attack
+Tackle, 50, 100, normal
+Tail Whip, 0, 100, normal, lowers opponent defense
+Take Down, 90, 85, normal, recoil damage
+#Teleport
+Thrash, 120, 100, normal, attacks for 2-3 turns then becomes confused
+Thunder, 110, 70, electric
+Thunder Punch, 75, 100, electric
+Thunder Shock, 40, 100, electric
+Thunder Wave, 0, 100, electric, paralyzes opponent
+Thunderbolt, 90, 100, electric
+Toxic, 0, 90, poison, poisons opponent
+#Transform
+Tri Attack, 80, 100, normal
+Twineedle, 25, 100, bug, hits 2 times
+Vice Grip, 55, 100, normal
+Vine Whip, 45, 100, grass
+Water Gun, 40, 100, water
+Waterfall, 80, 100, water
+#Whirlwind
+Wing Attack, 60, 100, flying
+Withdraw, 0, 100, water, raises defense
+Wrap, 15, 90, normal, damages for 4-5 turns
+>>
