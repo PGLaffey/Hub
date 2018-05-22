@@ -77,11 +77,11 @@ class Database():
         if query.split(" ")[0].upper() == "SELECT":
             return self.runSelectQuery(query, params)
         elif query.split(" ")[0].upper() == "INSERT" or query.split(" ")[0].upper() == "UPDATE":
-            self.runUpdateQuery(query, params)
-            return True
+            return self.runUpdateQuery(query, params)
 
     def runUpdateQuery(self, query, params):
         self.cursor.execute(query, params)
+        return True
     
     def runSelectQuery(self, query, params):
         self.cursor.execute(query, params)
