@@ -5,9 +5,6 @@ from python.utilities import Utilities
 
 class Hub():
     def __init__(self):
-        """
-        Initializes the Hub program.
-        """
         self.db = Database()
         self.running = True
         self.initializeCommands()
@@ -19,12 +16,6 @@ class Hub():
         self.getCommand()
 
     def getCommand(self):
-        """
-        Loops while the program is to continue running.
-        - Asks for user input for the next command to run.
-        - Runs the command if valid.
-        - Restarts loop if program is to continue.
-        """
         while self.running:
             self.printer("Command: ")
             command = input()
@@ -33,11 +24,6 @@ class Hub():
         exit(0)
 
     def processCommand(self, command):
-        """
-        Takes a user input command as a string and turns it into a list of
-        strings, split on spaces.
-        Uses the first string to determine which command to run.
-        """
         command = command.split(" ")
         if command[0].upper() in self.commands:
             self.commands[command.pop(0).upper()](command)
@@ -54,13 +40,6 @@ class Hub():
         return self.db.addUser(attr)
 
     def attemptLogin(self, username, password):
-        """
-        Attempts to log into a user from the username and password.
-        If successful returns the user, otherwise returns None.
-        @param username - The username of the user.
-        @param password - The password of the user.
-        @return         - The user if valid username and password, None otherwise.
-        """
         if password == self.db.getPassword(username):
             self.printer("Logged into user: " + username + "\n")
             self.user = self.db.getUser(username)
@@ -68,19 +47,7 @@ class Hub():
         self.printer("Invalid login credentials.\n")
         return False
 
-    def printerInvCmd(self, arg):
-        """
-        Prints a invalid command message using the printer.
-        @param arg - A list of the space seperated command string.
-        """
-        self.printer(" ".join(arg) + " is not a valid command. Type 'help' for assistance\n")
-
     def printer(self, string):
-        """
-        Prints the string to the console at the users type speed.
-        If no user is logged in, it prints at the standard speed.
-        @param string - The string to print.
-        """
         for char in string:
             print(char, end="")
             if self.user != None:
@@ -153,11 +120,11 @@ class Hub():
     def cmdLogout(self, arg):
         if self.user != self.defaultUser:
             while True:
-                self.printer("Are you sure you want to log out of user: " + self.user.getName())
+                self.printer("Are you sure you want to log out of user: " + self.user.getUsername())
                 ans = input()
                 if ans.upper() == "YES":
                     self.user = self.defaultUser
-                    self.printer("Logged out of user: " + self.user.getName()) 
+                    self.printer("Logged out of user: " + self.user.getUsername()) 
                     return True
                 elif ans.upper() == "NO" or ans.upper() == "CANCEL":
                     self.printer("Logout cancelled")
@@ -207,6 +174,7 @@ class Hub():
                 self.printerInvIn(ans, error)
         return self.createUser(values)
                 
+                        
 
     def initializeCommands(self):
         self.commands = {}
