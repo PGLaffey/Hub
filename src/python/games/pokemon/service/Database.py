@@ -1,6 +1,7 @@
 import sqlite3
 import sys
 from os.path import dirname, abspath
+from model.Pokemon import Pokemon
 
 class Database():
     def __init__(self):
@@ -37,7 +38,7 @@ class Database():
             "'total' integer NOT NULL, "
             "'health' integer NOT NULL, "
             "'attack' integer NOT NULL, "
-            "'defence' integer NOT NULL, "
+            "'defense' integer NOT NULL, "
             "'spattack' integer NOT NULL, "
             "'spdefence' integer NOT NULL, "
             "'speed' integer NOT NULL, "
@@ -76,7 +77,7 @@ class Database():
                         pm = line.split(',')
                         query = ("INSERT INTO tblPokemon "
                                  "(id, name, element1, element2, total, health,"
-                                 " attack, defence, spattack, spdefence, speed,"
+                                 " attack, defense, spattack, spdefence, speed,"
                                  " generation) VALUES (")
                         attr = 0
                         while attr < len(pm):
@@ -115,4 +116,13 @@ class Database():
         allPokemon = self.cursor.execute("SELECT id, name FROM tblPokemon")
         for pmID, name in allPokemon:
             pokemonNames[name] = pmID
-        return pokemonNames     
+        return pokemonNames
+
+    def loadPokemonAttr(self, pmID):
+        try:
+            return self.cursor.execute(("SELECT * FROM tblPokemon "
+                                        "WHERE id = " + str(pmID))).fetchall()[0]
+        except IndexError:
+            print("No Pokemon found with ID: " + str(pmID ,file=sys.stderr)
+                                        
+        

@@ -1,8 +1,8 @@
-
+from service.Database import Database
 
 class Pokemon(object):
-    def __init__(self, pmID, level = 1, moves = None, name = None, owner = None):
-        self.initialize(pmID)
+    def __init__(self, db, pmID, level = 1, moves = None, name = None, owner = None):
+        self.initialize(db, pmID)
         self.setLevel(level)
         if moves != None:
             self.moves = moves
@@ -11,8 +11,21 @@ class Pokemon(object):
         if owner != None:
             self.owner = owner
 
-    def initialize(self, pmID):
-        pass
+    def initialize(self, db, pmID):
+        attr = db.loadPokemonAttr(pmID)
+        self.pmID = attr[0]
+        self.name = attr[1]
+        self.element1 = attr[2]
+        self.element2 = attr[3]
+        self.total = attr[4]
+        self.health = attr[5]
+        self.maxHealth = attr[5]
+        self.attack = attr[6]
+        self.defense = attr[7]
+        self.specialAttack = attr[8]
+        self.specialDefense = attr[9]
+        self.speed = attr[10]
+        self.generation = attr[11]
 
     def setLevel(self, level):
         for i in range(1, level):
