@@ -1,14 +1,14 @@
 
 
 class Pokemon(object):
-    def __init__(self, pmID, level = 1, moves = none, name = none, owner = none):
+    def __init__(self, pmID, level = 1, moves = None, name = None, owner = None):
         self.initialize(pmID)
         self.setLevel(level)
-        if moves != none:
+        if moves != None:
             self.moves = moves
-        if name != none:
+        if name != None:
             self.name = name
-        if owner != none:
+        if owner != None:
             self.owner = owner
 
     def initialize(self, pmID):
