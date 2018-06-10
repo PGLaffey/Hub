@@ -1,7 +1,7 @@
 import sqlite3
 import sys
 from os.path import dirname, abspath
-from model.Pokemon import Pokemon
+from python.games.pokemon.model import Pokemon
 
 class Database():
     def __init__(self):
@@ -13,6 +13,7 @@ class Database():
         cursor = connection.cursor()
         if not self.tablesExisit(cursor):
             self.createDatabase(cursor)
+            connection.commit()
         return connection, cursor
 
     def tablesExisit(self, cursor):
@@ -46,7 +47,7 @@ class Database():
             "PRIMARY KEY(id))")
         for name, command in tables.items():
             cursor.execute(command)
-            print("Created database table: " + name, file=sys.stderr)
+            printerLog("Created database table: " + name, file=sys.stderr)
         self.createIndices(cursor)
         self.populateTables(cursor)
 
@@ -56,14 +57,14 @@ class Database():
 
         for name, command in indices.items():
             cursor.execute(command)
-            print("Created database index: " + name, file=sys.stderr)
+            printerLog("Created database index: " + name, file=sys.stderr)
 
     def populateTables(self, cursor):
         srcDir = dirname(dirname(dirname(dirname(__file__)))) + "\\resources\\pokemon"
         self.populateGen1(cursor, srcDir)
 
     def populateGen1(self, cursor, srcDir):
-        print("Loading generation 1 pokemon...", file=sys.stderr)
+        printerLog("Loading generation 1 pokemon...", file=sys.stderr)
         try:
             file = open(srcDir + "\\pokemon_gen_1")
             header = file.readline()
@@ -98,14 +99,14 @@ class Database():
                     lineCount += 1
                     if lineCount % 10 == 0:
                         percentage = int((lineCount / length) * 100)
-                        print("Loading Pokemon Gen 1 " + str(percentage) + "% Complete...", file=sys.stderr)
-                print("Loading Pokemon Gen 1 100% Complete...", file=sys.stderr)
+                        printerLog("Loading Pokemon Gen 1 " + str(percentage) + "% Complete...", file=sys.stderr)
+                printerLog("Loading Pokemon Gen 1 100% Complete...", file=sys.stderr)
             else:
                 raise ValueError
         except IOError:
-            print("Failed to load file: " + srcDir + "\\pokemon_gen_1")
+            printerLog("Failed to load file: " + srcDir + "\\pokemon_gen_1")
         except ValueError:
-            print("Bad file format: " + srcDir + "\\pokemon_gen_1")
+            printerLog("Bad file format: " + srcDir + "\\pokemon_gen_1")
                              
     def closeConnection(self):
         self.cursor.close()
@@ -123,6 +124,6 @@ class Database():
             return self.cursor.execute(("SELECT * FROM tblPokemon "
                                         "WHERE id = " + str(pmID))).fetchall()[0]
         except IndexError:
-            print("No Pokemon found with ID: " + str(pmID ,file=sys.stderr)
+            printerLog("No Pokemon found with ID: " + str(pmID) ,file=sys.stderr)
                                         
         

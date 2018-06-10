@@ -81,6 +81,7 @@ class Database():
 
     def runUpdateQuery(self, query, params):
         self.cursor.execute(query, params)
+        self.connect.commit()
         return True
     
     def runSelectQuery(self, query, params):

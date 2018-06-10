@@ -1,4 +1,4 @@
-from service.Database import Database
+from python.games.pokemon.service.Database import Database
 
 class Pokemon(object):
     def __init__(self, db, pmID, level = 1, moves = None, name = None, owner = None):
