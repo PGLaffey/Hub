@@ -5,6 +5,7 @@ def main():
     string = file.read()
     string = string.replace("\n", ",")
     string = string.replace("'", "`")
+    string = string.replace(".", "\n")
     file.close()
     file = open("d" + fileStr, "w")
     file.write(string)

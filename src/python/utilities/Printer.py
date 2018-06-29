@@ -24,8 +24,8 @@ def printerInvInput(response, valid):
 
 def printerLog(log):
     global user
-    for char in string:
-        print(char, end="", file=sys.err)
+    for char in log:
+        print(char, end="", file=sys.stderr)
         if user != None:
             time.sleep(1/user.getSpeed())
         else:

@@ -65,6 +65,7 @@ class Hub():
     def cmdRun(self, arg):
         print("Run command")
         if "".join(arg).upper() == "POKEMONBATTLER":
+            print()
             __import__("python.games.pokemon.PokemonBattler")
 
 
