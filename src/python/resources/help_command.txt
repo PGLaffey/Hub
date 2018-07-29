@@ -1,0 +1,25 @@
+:HELP:
+Help command
+
+:RUN:
+Runs an internal application passed in as a parameter. Eg Run PokemonBattler
+
+:QUIT:
+Exits the application.
+
+:EXIT:
+Exits the application.
+
+:CREATE:
+Used to create objects inside the application. Creatable objects,
+- User
+
+:LOGIN:
+Used to log into a previously created user.
+
+:LOG:
+Can be followed by an additional parameter 'in' to run the login command or 'out' to run the logout command.
+
+:LOGOUT:
+Logs out of the currently logged in user.
+
