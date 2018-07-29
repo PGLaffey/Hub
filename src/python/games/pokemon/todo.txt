@@ -1,0 +1,4 @@
+Refactor all insert statemtents to use multi-value insert statements 
+Add on duplicate key for all insert statemtents
+Use stderr as logging for now and eventually forward it to log file
+ 

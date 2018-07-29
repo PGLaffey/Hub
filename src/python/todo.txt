@@ -1,0 +1,3 @@
+Work on help command
+Convert all insert statements to multi-value insert statements
+Add on duplicate key for all insert statements
