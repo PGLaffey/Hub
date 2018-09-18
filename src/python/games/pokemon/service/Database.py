@@ -114,13 +114,17 @@ class Database():
                                 else:
                                     query += accur + ","
                             elif attr == 4:
-                                query += move[attr] + ","
+                                uses = move[attr]
+                                if uses == '—':
+                                    query += "-1,"
+                                else:
+                                    query += uses + ","
                             else:
                                 query += "'" + move[attr] + "',"
                             attr += 1
                         query += str(gen) + ")"
-                        cursor.execute(query)
                         print(query)
+                        cursor.execute(query)
                 printerLog("Loading " + filename + " Complete")
             else:
                 raise ValueError

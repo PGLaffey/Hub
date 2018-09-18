@@ -17,7 +17,7 @@ Bone Club,Ground,65,85,20,May cause flinching
 Bonemerang,Ground,50,90,10,Hits twice in one turn
 Bubble,Water,40,100,30,May lower opponents Speed
 Bubble Beam,Water,65,100,20,May lower opponents Speed
-Clamp,Water,35,85,10,Traps opponent, damaging them for 4-5 turns
+Clamp,Water,35,85,10,Traps opponent damaging them for 4-5 turns
 Comet Punch,Normal,18,85,15,Hits 2-5 times in one turn
 Confuse Ray,Ghost,—,100,10,Confuses opponent
 Confusion,Psychic,50,100,25,May confuse opponent
@@ -25,7 +25,8 @@ Constrict,Normal,10,100,35,May lower opponents Speed by one stage
 Conversion,Normal,—,—,30,Changes users type to that of its first move
 Counter,Fighting,—,100,20,When hit by a Physical Attack user strikes back with 2x power
 Crabhammer,Water,100,90,10,High critical hit ratio
-Cut,Normal,50,95,30,,Defense Curl,Normal,,—,—,40,Raises users Defense
+Cut,Normal,50,95,30,
+Defense Curl,Normal,—,—,40,Raises users Defense
 Dig,Ground,80,100,10,Digs underground on first turn attacks on second. Can also escape from caves
 Disable,Normal,—,100,20,Opponent cant use its last attack for a few turns
 Dizzy Punch,Normal,70,100,10,May confuse opponent
@@ -35,9 +36,9 @@ Double Team,Normal,—,—,15,Raises users Evasiveness
 Double-Edge,Normal,120,100,15,User receives recoil damage
 Dragon Rage,Dragon,—,100,10,Always inflicts 40 HP
 Dream Eater,Psychic,100,100,15,User recovers half the HP inflicted on a sleeping opponent
-Drill Peck,Flying,80,100,20
+Drill Peck,Flying,80,100,20,
 Earthquake,Ground,100,100,10,Power is doubled if opponent is underground from using Dig
-Egg Bomb,Normal,100,75,10
+Egg Bomb,Normal,100,75,10,
 Ember,Fire,40,100,25,May burn opponent
 Explosion,Normal,250,100,5,User faints
 Fire Blast,Fire,110,85,5,May burn opponent
@@ -59,14 +60,14 @@ Harden,Normal,—,—,30,Raises users Defense
 Haze,Ice,—,—,30,Resets all stat changes
 Headbutt,Normal,70,100,15,May cause flinching
 High Jump Kick,Fighting,130,90,10,If it misses the user loses half their HP
-Horn Attack,Normal,65,100,25
+Horn Attack,Normal,65,100,25,
 Horn Drill,Normal,—,—,5,One-Hit-KO if it hits
-Hydro Pump,Water,110,80,5
+Hydro Pump,Water,110,80,5,
 Hyper Beam,Normal,150,90,5,User must recharge next turn
 Hyper Fang,Normal,80,90,15,May cause flinching
 Hypnosis,Psychic,—,60,20,Puts opponent to sleep
 Ice Beam,Ice,90,100,10,May freeze opponent
-Ice Punch,Ice,,75,100,15,May freeze opponent
+Ice Punch,Ice,75,100,15,May freeze opponent
 Jump Kick,Fighting,100,95,10,If it misses the user loses half their HP
 Karate Chop,Fighting,50,100,25,High critical hit ratio
 Kinesis,Psychic,—,80,15,Lowers opponents Accuracy
@@ -79,8 +80,8 @@ Lovely Kiss,Normal,—,75,10,Puts opponent to sleep
 Low Kick,Fighting,—,100,20,The heavier the opponent the stronger the attack
 Meditate,Psychic,—,—,40,Raises users Attack
 Mega Drain,Grass,40,100,15,User recovers half the HP inflicted on opponent
-Mega Kick,Normal,120,75,5
-Mega Punch,Normal,80,85,20
+Mega Kick,Normal,120,75,5,
+Mega Punch,Normal,80,85,20,
 Metronome,Normal,—,—,10,User performs any move in the game at random
 Mimic,Normal,—,—,10,Copies the opponents last move
 Minimize,Normal,—,—,10,Sharply raises users Evasiveness
@@ -88,13 +89,13 @@ Mirror Move,Flying,—,—,20,User performs the opponents last move
 Mist,Ice,—,—,30,Users stats cannot be changed for a period of time
 Night Shade,Ghost,—,100,15,Inflicts damage equal to users level
 Pay Day,Normal,40,100,20,A small amount of money is gained after the battle resolves
-Peck,Flying,35,100,35
+Peck,Flying,35,100,35,
 Petal Dance,Grass,120,100,10,User attacks for 2-3 turns but then becomes confused
 Pin Missile,Bug,25,95,20,Hits 2-5 times in one turn
 Poison Gas,Poison,—,90,40,Poisons opponent
 Poison Powder,Poison,—,75,35,Poisons opponent
 Poison Sting,Poison,15,100,35,May poison the opponent
-Pound,Normal,40,100,35
+Pound,Normal,40,100,35,
 Psybeam,Psychic,65,100,20,May confuse opponent
 Psychic,Psychic,90,100,10,May lower opponents Special Defense
 Psywave,Psychic,—,80,15,Inflicts damage 50-150% of users level
@@ -107,10 +108,10 @@ Reflect,Psychic,—,—,20,Halves damage from Physical attacks for 5 turns
 Rest,Psychic,—,—,10,User sleeps for 2 turns but user is fully healed
 Roar,Normal,—,—,20,In battles the opponent switches. In the wild the Pokemon runs
 Rock Slide,Rock,75,90,10,May cause flinching
-Rock Throw,Rock,50,90,15
+Rock Throw,Rock,50,90,15,
 Rolling Kick,Fighting,60,85,15,May cause flinching
 Sand Attack,Ground,—,100,15,Lowers opponents Accuracy
-Scratch,Normal,40,100,35
+Scratch,Normal,40,100,35,
 Screech,Normal,—,85,40,Sharply lowers opponents Defense
 Seismic Toss,Fighting,—,100,20,Inflicts damage equal to users level
 Self-Destruct,Normal,200,100,5,User faints
@@ -118,7 +119,7 @@ Sharpen,Normal,—,—,30,Raises users Attack
 Sing,Normal,—,55,15,Puts opponent to sleep
 Skull Bash,Normal,130,100,10,Raises Defense on first turn attacks on second
 Sky Attack,Flying,140,90,5,Charges on first turn attacks on second. May cause flinching
-Slam,Normal,80,75,20
+Slam,Normal,80,75,20,
 Slash,Normal,70,100,20,High critical hit ratio
 Sleep Powder,Grass,—,75,15,Puts opponent to sleep
 Sludge,Poison,65,100,20,May poison opponent
@@ -131,7 +132,7 @@ Spike Cannon,Normal,20,100,15,Hits 2-5 times in one turn
 Splash,Normal,—,—,40,Doesnt do ANYTHING
 Spore,Grass,—,100,15,Puts opponent to sleep
 Stomp,Normal,65,100,20,May cause flinching
-Strength,Normal,80,100,15
+Strength,Normal,80,100,15,
 String Shot,Bug,—,95,40,Sharply lowers opponents Speed
 Struggle,Normal,50,100,—,Only usable when all PP are gone. Hurts the user
 Stun Spore,Grass,—,75,30,Paralyzes opponent
@@ -142,7 +143,7 @@ Supersonic,Normal,—,55,20,Confuses opponent
 Surf,Water,90,100,15,Hits all adjacent Pokemon
 Swift,Normal,60,8,20,Ignores Accuracy and Evasiveness
 Swords Dance,Normal,—,—,20,Sharply raises users Attack
-Tackle,Normal,40,100,35
+Tackle,Normal,40,100,35,
 Tail Whip,Normal,—,100,30,Lowers opponents Defense
 Take Down,Normal,90,85,20,User receives recoil damage
 Teleport,Psychic,—,—,20,Allows user to flee wild battles; also warps player to last PokeCenter
@@ -154,13 +155,13 @@ Thunder Wave,Electric,—,90,20,Paralyzes opponent
 Thunderbolt,Electric,90,100,15,May paralyze opponent
 Toxic,Poison,—,90,10,Badly poisons opponent
 Transform,Normal,—,—,10,User takes on the form and attacks of the opponent
-Tri Attack,Normal,80,100,10,May paralyze, burn or freeze opponent
+Tri Attack,Normal,80,100,10,May paralyze burn or freeze opponent
 Twineedle,Bug,25,100,20,Hits twice in one turn. May poison opponent
-Vice Grip,Normal,55,100,30
-Vine Whip,Grass,45,100,25
-Water Gun,Water,40,100,25
+Vice Grip,Normal,55,100,30,
+Vine Whip,Grass,45,100,25,
+Water Gun,Water,40,100,25,
 Waterfall,Water,80,100,15,May cause flinching
 Whirlwind,Normal,—,—,20,In battles the opponent switches. In the wild the Pokemon runs
-Wing Attack,Flying,60,100,35
+Wing Attack,Flying,60,100,35,
 Withdraw,Water,—,—,40,Raises users Defense
 Wrap,Normal,15,90,20,Traps opponent damaging them for 4-5 turns
