@@ -1,17 +1,15 @@
-class Piece():
-    def __init__(self, white, x, y):
-        self.white = white
-        self.x = x
-        self.y = y
+from abc import ABC, abstractmethod
 
-    def move_to(self, x, y):
-        self.x = x
-        self.y = y
-
-    def moves(self):
-        return []
-
-    def attacks(self):
-        return moves
-
+class Piece(ABC):
+ 
+    def __init__(self, location, team):
+        self.location = location
+        self.team = team
+        super().__init__()
     
+    @abstractmethod
+    def getMoves(self):
+        pass
+
+    def move(self, location):
+        self.location = location
