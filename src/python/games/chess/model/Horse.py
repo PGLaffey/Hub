@@ -4,6 +4,12 @@ class Horse(Piece):
     def __init__(self, location, team):
         super().__init__(location, team)
 
+    def __str__(self):
+        return "H"
+
+    def __repr__(self):
+        return "H"
+
     def getMoves(self):
         newLoc = (location[0] + 1, location[1] + 2)
         if newLoc[0] < 8 and newLoc[1] < 8:

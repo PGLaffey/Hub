@@ -4,6 +4,12 @@ class Queen(Piece):
     def __init__(self, location, team):
         super().__init__(location, team)
 
+    def __str__(self):
+        return "Q"
+
+    def __repr__(self):
+        return "Q"
+
     def getMoves(self):
         for d in range(8):
             if location[0] + d < 8:

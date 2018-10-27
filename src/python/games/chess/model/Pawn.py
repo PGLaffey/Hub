@@ -9,6 +9,12 @@ class Pawn(Piece):
         self.direct = direct
         super().__init__(location, team)
 
+    def __str__(self):
+        return "P"
+
+    def __repr__(self):
+        return "P"
+
     def getMoves(self):
         distance = 1
         if self.moved == False:
