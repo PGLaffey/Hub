@@ -13,12 +13,16 @@ class Chess(object):
     def play(self):
         count = 0
         while True:
-            print("It is player " + str(count + 1) + "'s turn.")
+            print("\n-----It is player " + str(count + 1) + "'s turn.-----")
             self.game.printBoard()
             self.players[count].takeTurn()
+            if self.game.isGameOver():
+                break
             count += 1
-            if count > len(self.players):
+            if count >= len(self.players):
                 count = 0
+        print("Congradulations Player " + str(count + 1) + " you win!!!")
+        
 
     def initializeGame(self, numPlayers):
         if numPlayers == 2:

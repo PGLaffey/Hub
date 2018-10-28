@@ -1,0 +1,9 @@
+
+#PLAYER
+The following commands are available:
+'Help' - Prints the help command.
+'Move' - Moves one of your pieces. Optionally add 'X to Y' after the command where 'X' is the location of the piece and 'Y' is the location you want to move the piece to.
+'Moves' - Prints the available moves for one of your pieces. Optionally add 'X' after the command where 'X' is the location of the piece.
+'Print' - Prints the current board.
+'Save' - Saves the current game.
+#

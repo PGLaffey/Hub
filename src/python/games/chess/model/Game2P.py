@@ -10,6 +10,15 @@ class Game2P():
     def __init__(self, team1=[], team2=[]):
         self.team1 = team1
         self.team2 = team2
+        self.converter = {
+            0: "A",
+            1: "B",
+            2: "C",
+            3: "D",
+            4: "E",
+            5: "F",
+            6: "G",
+            7: "H"}
         if self.isNewGame():
             self.initializePlayers()
 
@@ -47,8 +56,10 @@ class Game2P():
         for piece in self.team2:
             loc = piece.getLocation()
             pieces2[loc[1]][loc[0]] = piece.__str__()
+        print("  A B C D E F G H")
         for i in range(8):
             self.printSeperator()
+            print(str(i + 1), end='')
             for k in range(8):
                 print("|", end='')
                 if pieces1[i][k] != ' ':
@@ -61,7 +72,7 @@ class Game2P():
         self.printSeperator()
         
     def printSeperator(self):
-        print(("+-" * 8) + "+")
+        print(" " + ("+-" * 8) + "+")
 
     def isNewGame(self):
         if self.team1 or self.team2:
@@ -81,7 +92,7 @@ class Game2P():
             y1 = 6
             y2 = 7
         for d in range(8):
-            pieces.append(Pawn((d,y1), team, direct))
+            pieces.append(Pawn((d,y1), team, direct, self))
             if d == 0 or d == 7:
                 pieces.append(Rook((d,y2), team))
             elif d == 1 or d == 6:
@@ -122,3 +133,57 @@ class Game2P():
         elif playerNum == 2:
             return self.team2
         return False
+
+    def getPawnAttacks(self, loc, team):
+        if team == 1:
+            newLoc = (loc[0] + 1, loc[1] + 1)
+            if self.findPiece(newLoc, self.team2):
+                yield newLoc
+            newLoc = (loc[0] - 1, loc[1] + 1)
+            if self.findPiece(newLoc, self.team2):
+                yield newLoc
+        else:
+            newLoc = (loc[0] + 1, loc[1] - 1)
+            if self.findPiece(newLoc, self.team1):
+                yield newLoc
+            newLoc = (loc[0] - 1, loc[1] - 1)
+            if self.findPiece(newLoc, self.team1):
+                yield newLoc
+
+    def noCollision(self, loc, team):
+        if team == 1:
+            if self.findPiece(loc, self.team2):
+                return True
+        else:
+            if self.findPiece(loc, self.team1):
+                return True
+        return False
+
+    def doPawnUpgrade(self, loc, team):
+        valid = {"queen": Queen,
+                 "rook": Rook,
+                 "bishop": Bishop,
+                 "horse": Horse}
+        self.printBoard()
+        print("One of your Pawns have reached your opponents end. You must now promote it.")
+        while True:
+            ans = input("What would you like to promote it to? ")
+            if ans.lower() in valid.keys():
+                piece = valid.get(ans.lower())(loc, team)
+                if team == 1:
+                    self.team1.remove(self.findPiece(loc, self.team1))
+                    self.team1.append(piece)
+                else:
+                    self.team2.remove(self.findPiece(loc, self.team2))
+                    self.team2.append(piece)
+                break
+            print(ans + " is not a valid response. Please enter Queen, Rook, Bishop or Horse.")
+            
+    def isGameOver(self):
+        for piece in self.team1:
+            if type(piece) is King:
+                return False
+        for piece in self.team2:
+            if type(piece) is King:
+                return False
+        return True

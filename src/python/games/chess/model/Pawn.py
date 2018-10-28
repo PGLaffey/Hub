@@ -2,10 +2,11 @@ from Piece import Piece
 
 class Pawn(Piece):
 
-    def __init__(self, location, team, direct, moved=False):
+    def __init__(self, location, team, direct, game, moved=False):
         """Location - current location of piece
            Direct - U, D, L, R"""
         self.moved = moved
+        self.game = game
         self.direct = direct
         super().__init__(location, team)
 
@@ -13,20 +14,40 @@ class Pawn(Piece):
         return "P"
 
     def __repr__(self):
-        return "P"
+        return "Pawn"
 
     def getMoves(self):
-        distance = 1
-        if self.moved == False:
-            distance = 2
-        if self.direct == 'U':
-            #Test generator
-            yield ((location[0], y) if x % 2 else x* 100 for d in range(distance))
-        elif self.direct == 'D':
-            yield ((location[0], location[1] - d - 1) for y in range(distance))
-        elif self.direct == 'L':
-            yield ((location[0], location[1] - d - 1) for x in range(distance))
-            
+        attacks = list(self.game.getPawnAttacks(self.location, self.team))
+        if attacks:
+            for attack in attacks:
+                yield attack
+        else:
+            distance = 1
+            if self.moved == False:
+                distance = 2
+            while distance > 0:
+                if self.direct == 'U' and self.location[1] < 7:
+                    newLoc = (self.location[0], self.location[1] + distance)
+                elif self.direct == 'D' and self.location[1] > 0:
+                    newLoc = (self.location[0], self.location[1] - distance)
+                elif self.direct == 'L' and self.location[0] > 0:
+                    newLoc = (self.location[0] - distance, self.location[1])
+                elif self.direct == 'R' and self.location[0] < 7:
+                    newLoc = (self.location[0] + distance, self.location[1])
+                if self.game.noCollision(newLoc, self.team):
+                    yield newLoc
+                distance -= 1
+        self.checkUpgrade()
+        
+    def checkUpgrade(self):
+        if self.direct == 'U' and self.location[1] == 7:
+            self.game.doPawnUpgrade(self.location, self.team)
+        elif self.direct == 'D' and self.location[1] == 0:
+            self.game.doPawnUpgrade(self.location, self.team)
+        elif self.direct == 'L' and self.location[0] == 0:
+            self.game.doPawnUpgrade(self.location, self.team)
+        elif self.direct == 'R' and self.location[0] == 7:
+            self.game.doPawnUpgrade(self.location, self.team)
 
     def move(self, location):
         self.moved = True
