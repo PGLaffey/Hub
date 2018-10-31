@@ -1,4 +1,4 @@
-from Player import Player
+from model.Player import Player
 
 class AIPlayer(Player):
 

@@ -1,4 +1,4 @@
-from Player import Player
+from model.Player import Player
 
 class HumanPlayer(Player):
 
@@ -10,7 +10,7 @@ class HumanPlayer(Player):
             "help": self.chelp,
             "print": self.cprint
             }
-        self.converter = {
+        self.charToInt = {
             "a": 0,
             "b": 1,
             "c": 2,
@@ -19,6 +19,15 @@ class HumanPlayer(Player):
             "f": 5,
             "g": 6,
             "h": 7}
+        self.intToChar = {
+            0: "A",
+            1: "B",
+            2: "C",
+            3: "D",
+            4: "E",
+            5: "F",
+            6: "G",
+            7: "H"}
         super().__init__(game, num)
 
     def takeTurn(self):
@@ -59,7 +68,7 @@ class HumanPlayer(Player):
         return True
 
     def findPiece(self, loc):
-        coord = (self.converter[loc[0].lower()], int(loc[1]) - 1)
+        coord = (self.charToInt[loc[0].lower()], int(loc[1]) - 1)
         for piece in self.pieces:
             if piece.getLocation() == coord:
                 return piece
@@ -67,18 +76,18 @@ class HumanPlayer(Player):
         return False
 
     def moveTo(self, piece, newLoc):
-        coord = (self.converter[newLoc[0].lower()], int(newLoc[1]) - 1)
+        coord = (self.charToInt[newLoc[0].lower()], int(newLoc[1]) - 1)
         piece.move(coord)
         self.game.checkAttack(piece)
 
     def validMove(self, loc, piece):
-        coord = (self.converter[loc[0].lower()], int(loc[1]) - 1)
+        coord = (self.charToInt[loc[0].lower()], int(loc[1]) - 1)
         if coord in piece.getMoves():
             return True
         return False
 
     def validLocation(self, loc):
-        if loc[0].lower() in self.converter:
+        if loc[0].lower() in self.charToInt:
             if int(loc[1]) <= 8 and int(loc[1]) >= 1:
                 return True
         print("Location " + loc + " is invalid. Please enter between A1 and H8.")
@@ -96,21 +105,23 @@ class HumanPlayer(Player):
     def moves(self, arg):
         if len(arg) > 0:
             loc = arg.pop(0)
-            if validLocation(loc) and findPiece(ans):
-                piece = findPiece(ans)
+            if self.validLocation(loc) and self.findPiece(loc):
+                piece = self.findPiece(loc)
                 print("Moves for " + piece.__repr__() + " at " + loc + ":")
                 print("| ", end='')
                 for move in piece.getMoves():
-                    print(str(move[0]) + ", " + str(move[1]) + " | ")
+                    print(self.intToChar[move[0]] + ", " + str(move[1]) + " | ", end='')
+                print()
                 return False
         while True:
             print("Enter the location of the piece you want to check the moves for:")
             ans = input()
-            if validLocation(ans) and findPiece(ans):
-                piece = findPiece(ans)
-                print("Moves for " + piece.__repr__() + " at " + loc + ":")
+            if self.validLocation(ans) and self.findPiece(ans):
+                piece = self.findPiece(ans)
+                print("Moves for " + piece.__repr__() + " at " + ans + ":")
                 print("| ", end='')
                 for move in piece.getMoves():
-                    print(str(move[0]) + ", " + str(move[1]) + " | ")
+                    print(self.intToChar[move[0]] + ", " + str(move[1]) + " | ", end='')
+                print()
                 return False
             

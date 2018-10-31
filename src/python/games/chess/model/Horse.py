@@ -1,8 +1,8 @@
-from Piece import Piece
+from model.Piece import Piece
 
 class Horse(Piece):
-    def __init__(self, location, team):
-        super().__init__(location, team)
+    def __init__(self, location, team, game):
+        super().__init__(location, team, game)
 
     def __str__(self):
         return "H"
@@ -12,26 +12,26 @@ class Horse(Piece):
 
     def getMoves(self):
         newLoc = (self.location[0] + 1, self.location[1] + 2)
-        if newLoc[0] < 8 and newLoc[1] < 8:
+        if self.validMove(newLoc):
             yield newLoc
         newLoc = (self.location[0] - 1, self.location[1] + 2)
-        if newLoc[0] >= 0 and newLoc[1] < 8:
+        if self.validMove(newLoc):
             yield newLoc            
         newLoc = (self.location[0] - 1, self.location[1] - 2)
-        if newLoc[0] >= 0 and newLoc[1] >= 0:
+        if self.validMove(newLoc):
             yield newLoc
         newLoc = (self.location[0] + 1, self.location[1] - 2)
-        if newLoc[0] < 8 and newLoc[1] >= 0:
+        if self.validMove(newLoc):
             yield newLoc
         newLoc = (self.location[0] + 2, self.location[1] + 1)
-        if newLoc[0] < 8 and newLoc[1] < 8:
+        if self.validMove(newLoc):
             yield newLoc
         newLoc = (self.location[0] + 2, self.location[1] - 1)
-        if newLoc[0] < 8 and newLoc[1] >= 0:
+        if self.validMove(newLoc):
             yield newLoc
         newLoc = (self.location[0] - 2, self.location[1] + 1)
-        if newLoc[0] >= 0 and newLoc[1] < 8:
+        if self.validMove(newLoc):
             yield newLoc
         newLoc = (self.location[0] - 2, self.location[1] - 1)
-        if newLoc[0] >= 0 and newLoc[1] >= 0:
+        if self.validMove(newLoc):
             yield newLoc

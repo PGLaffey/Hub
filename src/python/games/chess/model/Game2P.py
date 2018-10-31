@@ -1,9 +1,9 @@
-from Bishop import Bishop
-from King import King
-from Pawn import Pawn
-from Queen import Queen
-from Rook import Rook
-from Horse import Horse
+from model.Bishop import Bishop
+from model.King import King
+from model.Pawn import Pawn
+from model.Queen import Queen
+from model.Rook import Rook
+from model.Horse import Horse
 import sys
 
 class Game2P():
@@ -92,23 +92,23 @@ class Game2P():
             y1 = 6
             y2 = 7
         for d in range(8):
-            pieces.append(Pawn((d,y1), team, direct, self))
+            pieces.append(Pawn((d,y1), team, self, direct))
             if d == 0 or d == 7:
-                pieces.append(Rook((d,y2), team))
+                pieces.append(Rook((d,y2), team, self))
             elif d == 1 or d == 6:
-                pieces.append(Horse((d,y2), team))
+                pieces.append(Horse((d,y2), team, self))
             elif d == 2 or d == 5:
-                pieces.append(Bishop((d,y2), team))
+                pieces.append(Bishop((d,y2), team, self))
             elif d == 3:
                 if team == 1:
-                    pieces.append(King((d,y2), team))
+                    pieces.append(King((d,y2), team, self))
                 else:
-                    pieces.append(Queen((d,y2), team))
+                    pieces.append(Queen((d,y2), team, self))
             else:
                 if team == 1:
-                    pieces.append(Queen((d,y2), team))
+                    pieces.append(Queen((d,y2), team, self))
                 else:
-                    pieces.append(King((d,y2), team))
+                    pieces.append(King((d,y2), team, self))
         return pieces
 
     def checkAttack(self, piece):
@@ -136,17 +136,17 @@ class Game2P():
 
     def getPawnAttacks(self, loc, team):
         if team == 1:
-            newLoc = (loc[0] + 1, loc[1] + 1)
+            newLoc = (loc[0] + 1, loc[1] - 1)
             if self.findPiece(newLoc, self.team2):
                 yield newLoc
-            newLoc = (loc[0] - 1, loc[1] + 1)
+            newLoc = (loc[0] - 1, loc[1] - 1)
             if self.findPiece(newLoc, self.team2):
                 yield newLoc
         else:
-            newLoc = (loc[0] + 1, loc[1] - 1)
+            newLoc = (loc[0] + 1, loc[1] + 1)
             if self.findPiece(newLoc, self.team1):
                 yield newLoc
-            newLoc = (loc[0] - 1, loc[1] - 1)
+            newLoc = (loc[0] - 1, loc[1] + 1)
             if self.findPiece(newLoc, self.team1):
                 yield newLoc
 
@@ -180,10 +180,11 @@ class Game2P():
             print(ans + " is not a valid response. Please enter Queen, Rook, Bishop or Horse.")
             
     def isGameOver(self):
+        kings = 0
         for piece in self.team1:
             if type(piece) is King:
-                return False
+                kings += 1
         for piece in self.team2:
             if type(piece) is King:
-                return False
-        return True
+                kings += 1
+        return kings < 2
